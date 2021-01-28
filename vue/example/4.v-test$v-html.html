@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> v-text & v-html </title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1 >v-text & v-html </h1>
+    <div id="app">
+        <p v-text="text"></p>
+        <!-- 有Xss攻击风险, 尽量不用 -->
+        <p v-html="htmlText"></p>
+    </div>
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                text: 'hello wordl',
+                htmlText: '<p style="color: red"> red hello world</p>'
+            },
+            method: {
+
+            }
+        })
+    </script>
+</body>
+</html>

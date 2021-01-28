@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> v-on </title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-on</h1>
+    <div id="app">
+        count: {{count}}
+        <p>
+            <button v-on:click='add'>add</button>
+            <button v-on:click="minus" >minus</button>
+            <!-- 另一种写法 v-on: 换成@   -->
+            <button @click='add'>add</button>
+            <button @click="minus" >minus</button>
+        </p>
+    </div>
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                count: 0
+            },
+            methods: {
+                add: function(){
+                    this.count++  // 直接用this.count 就可以访问到上面data中声明的data中的count
+                },
+                minus: function(){
+                    this.count--
+                }
+            }
+        })
+    </script>
+</body>
+</html>

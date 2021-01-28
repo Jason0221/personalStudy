@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> v-for </title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-for</h1>
+    <div id="app">
+        <ul>
+            <li v-for="(item,index) in items">{{index}} : {{item}}</li>
+            <hr>
+            <li v-for="item in sortedItems">{{item}}</li>
+        </ul>
+    </div>
+    <script>
+        var vue = new Vue({
+            el: '#app',
+            data: {
+                items: [
+                    1,3,2,4,5
+                ]
+            },
+            computed: {  // 将一个数据计算后, 换一个名字输出到界面中, items ---> sortedItems
+                sortedItems: function(){
+                    var newItems = JSON.parse(JSON.stringify(this.items))
+                    return newItems.sort(function(a,b){
+                        return a-b
+                    })
+                }
+            },
+            method: {
+
+            }
+        })
+    </script>
+</body>
+</html>
