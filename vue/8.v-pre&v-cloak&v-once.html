@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> v-pre & v-cloak & v-once </title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+  <h1> v-pre & v-cloak & v-once </h1>
+  <div id="app">
+    <!-- 原样输出,vue不进行渲染 -->
+    <p v-pre>{{message}}</p>
+    <!-- vue加载时, 不显示 {{message}} -->
+    <p v-cloak>{{message}}</p>
+    <!-- 只渲染一次, 之后不进行改变 input改变, p标签不改变   -->
+    <p v-once>{{message}}</p> 
+    <input type="text" v-model="message">
+  </div>
+  <script>
+    var vue = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello world'
+      },
+      methods: {
+
+      }
+    })
+  </script>
+</body>
+</html>

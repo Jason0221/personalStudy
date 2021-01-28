@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> 自定义指令</title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+  <h1> 自定义指令  Vue.directive </h1>
+  <div id="app">
+    <div v-jason ='color'>{{count}}</div>
+    <p><button @click="add">add</button></p>
+  </div>
+    <div>
+      <button onClick="unBind()">解绑</button>
+    </div>
+  <script>
+
+    //自定义指令, 不用写 v-, 不用生命周期时, 第二个参数传入一个匿名函数
+    // Vue.directive('jason', function(el, binding){
+    //   console.log(el); // 当前dom
+    //   console.log(binding);
+    //   el.style = `color:${binding.value}` //原生js 给dom设置style样式.
+    // })
+
+
+    // 自定义指令, 使用生命周期时, 第二个参数传入一个对象,
+    Vue.directive('jason', {
+      bind: function(el, binding){ // 被绑定时触发
+        el.style = `color:${binding.value}`
+        console.log('1.binding....... ');
+      },
+      inserted: function(){ // 绑定到DOM时触发
+        console.log('2.inserted....');
+      },
+      update: function(){ // 更新时触发
+        console.log('3.updete....');
+      },
+      componentUpdated: function(){ // 更新完成后触发
+        console.log('4.componentUpdated...');
+      },
+      unbind: function(){ // 解除绑定时触发
+        console.log('5.unbind....');
+      }
+    })
+
+    function unBind(){
+      app.$destroy();
+    }
+
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        count: 0,
+        color: 'lightblue'
+      },
+      methods: {
+        add: function(){
+          this.count++
+        }
+      }
+    })
+
+
+
+  </script>
+</body>
+</html>

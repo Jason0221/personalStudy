@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> 扩展实例构造器 Vue.extend</title>
+  <script src="./vue.js"></script>
+</head>
+<body>
+  <h1> 扩展实例构造器 Vue.extend</h1>
+    <!-- 后期不建议使用这种方式, 
+      因为组件通过html标签的形式使用,建议使用id的形式来做扩展 -->
+  <author></author>
+  <div id="author"></div>
+  <script>
+    var authorExtend = Vue.extend({
+      template: '<p> {{authorName}}</p>',
+      data: function(){
+        return {
+          authorName: 'jason'
+        }
+      }
+    });
+
+    new authorExtend().$mount('author'); // 通过html标签的形式绑定到vue中.
+    new authorExtend().$mount('#author'); // 通过id的形式绑定到vue中.
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> v-bind </title>
+  <script src="./vue.js"></script>
+</head>
+<style>
+  .red{
+    color: red;
+  }
+  .bold{
+    font-weight: bold;
+  }
+</style>
+<body>
+  <h1> v-bind </h1>
+  <div id="app">
+    <p>
+      <img v-bind:src="imgSrc" >
+    </p>
+    <!-- v-bind 简写 -->
+    <p>
+      <a :href="baiduUrl" > 百度</a>
+    </p>
+    <hr>
+    <h3>class 绑定</h3>
+    <!-- 简单绑定 -->
+    <p :class="redClass">{{message}}</p>
+    <!-- 绑定class数组 -->
+    <p :class='[redClass, boldClass]'>{{message}}</p>
+    <!--三元运算绑定  -->
+    <p :class='isRed ? redClass : boldClass'>{{message}}</p>
+    <input type="checkbox" id="isRed" v-model="isRed">
+    <label for="isRed">{{isRed}}</label>
+    <hr>
+    <h3>style 绑定</h3>
+    <p :style='{color: greenStyle, fontWeight: boldStyle}'>{{message}}</p>
+    <!-- 绑定样式对象 -->
+    <p :style='styleObj'>{{message}}</p>
+
+  </div>
+  <script>
+    var vue = new Vue({
+      el: '#app',
+      data: {
+        imgSrc: "./22.png",
+        baiduUrl: 'http://www.baidu.com',
+        message: 'hello World',
+        redClass: 'red',
+        boldClass: 'bold',
+        isRed: true,
+        greenStyle: 'green',
+        boldStyle: 'bold',
+        styleObj: {
+          color: 'blue',
+          fontWeight: 'bold'
+        }
+      },
+      methods: {
+
+      }
+    })
+  </script>
+</body>
+</html>
