@@ -11,17 +11,26 @@
   <hr>
   <div id="app">
     <p>{{count}} </p>
+    <ul>
+      <li v-for="item in goods">{{item}}</li>
+    </ul>
   </div>
+    <p><button onclick="add()">add</button></p>
+
   <script>
+
+    function add(){
+      // outData.count++;
+      console.log('000');
+      Vue.set(outData,'count', 2)
+    }
     var outData = {
       count: 1,
-      goods: 'car'
+      goods: ['apple', 'grape', 'pee']
     }
     var app = new Vue({
       el: '#app',
-      data: {
-        count: outData.count
-      },
+      data: outData,
       methods: {
 
       }
