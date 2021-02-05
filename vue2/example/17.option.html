@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> option 选项 </title>
+  <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <h1> option 选项 </h1>
+  <hr>
+  <div id="app">
+    <header></header>
+  </div>
+
+
+  <script>
+
+    var header_a = Vue.extend({
+      template: `
+        <p>{{message}}</p>
+      `,
+      data: function() {
+        return {
+          message: " hello , I'm header "
+        }
+      }
+    })
+    new header_a().$mount('header')
+
+  </script>
+</body>
+</html>

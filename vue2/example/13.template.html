@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> template  </title>
+  <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <h1> template 模板 三种写法 </h1>
+  <hr>
+  <div id="app">
+    <p>{{count}} </p>
+    <button @click='add' >add</button>
+  </div>
+
+  <template id="temp2">
+    <h2 style="color:red">我是 template 标签模板</h2>
+  </template>
+
+  <!-- 此处注意script标签的type属性 -->
+  <script type="x-template" id="temp3">
+    <h2 style="color:red">我是 script标签 模板</h2>
+  </script>
+
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        count: 0,
+        message: [],
+      },
+      methods: {
+        add: function(){
+          this.count++
+        }
+      },
+      // 方法一: 选项模板
+      // template: `<h2 :style="{color: 'red'}"> 我是选项模板 </h2>`
+
+      // 方法二: 标签模板, 属性值为上面template标签的id
+      // template: "#temp2"
+
+      // 方法三: script, 属性值为上面script标签的id
+      template: "#temp3"
+
+    })
+  </script>
+</body>
+</html>

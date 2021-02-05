@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> 构造器外部创造局部组件 </title>
+  <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <h1> 构造器外部创造局部组件 </h1>
+  <hr>
+  <div id="app">
+
+    <dad></dad>
+  
+  </div>
+
+
+  <script>
+
+    var childComponent = {
+      template:'<span> child component </span>',
+    }
+    var dadComponent = {
+      template: `<div>
+          <h2>一个局部组件</h2>
+          <child></child>
+        </div>`,
+      components: {
+        'child': childComponent
+      }
+    }
+
+    var app = new Vue({
+      el: '#app',
+      // 局部组件, 只能在#app 内部使用
+      data: {
+      },
+      components: {
+        'dad': dadComponent
+      }
+    })
+  </script>
+</body>
+</html>

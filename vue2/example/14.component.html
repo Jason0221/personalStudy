@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> 全局组件 component </title>
+  <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <h1> 全局组件 component </h1>
+  <hr>
+  <div id="app">
+    <jason></jason>
+    <guohao name="guohao" from-where="China"></guohao>
+    
+    <!-- 绑定父级data中的数据 使用v-bind -->
+    <guohao :name="message" from-where="China"></guohao>
+  
+  </div>
+
+
+  <script>
+    // 全局组件
+    Vue.component('jason',{
+      template:  `<h2>一个全局组件</h2>`
+    })
+    var app = new Vue({
+      el: '#app',
+      // 局部组件, 只能在#app 内部使用
+      data: {
+        message: "I'm message"
+      },
+      components: {
+        'guohao': {
+          props: ['name', 'fromWhere'], //  注册props值,  html中属性值的-的写法, 需要改为小驼峰写法
+          template: `<h2>一个局部组件 {{name}}, from {{fromWhere}}</h2>`,
+        }
+      }
+    })
+  </script>
+</body>
+</html>

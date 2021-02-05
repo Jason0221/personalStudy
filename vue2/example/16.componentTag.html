@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> component标签 </title>
+  <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <h1> component标签 </h1>
+  <hr>
+  <div id="app">
+    <component v-bind:is="who"></component>
+    <button  @click="changeComponent" > changeComponent</button>
+  </div>
+
+
+  <script>
+
+    var componentA = {
+      template:'<p> component A </p>',
+    }
+    var componentB = {
+      template:'<p> component B </p>',
+    }
+    var componentC = {
+      template:'<p> component C </p>',
+    }
+
+    var app = new Vue({
+      el: '#app',
+      data: {
+        who: 'componentA'
+      },
+      components: {
+        'componentA': componentA,
+        'componentB': componentB,
+        'componentC': componentC,
+      },
+      methods: {
+        // 切换选中的组件
+        changeComponent: function(){
+          if (this.who === 'componentA') {
+            this.who = 'componentB'
+          } else if (this.who === 'componentB') {
+            this.who = 'componentC'
+          } else {
+            this.who = 'componentA'
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>
