@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> option mixin </title>
+  <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <h1> option mixin </h1>
+  <hr>
+  <div id="app">
+    <p>
+      今日温度: {{count}} 
+    </p>
+    <button @click="add">add</button>
+  </div>
+
+  <!-- mixin  混入,  在原有构造器外面, 继续给构造器添加功能 -->
+  <script>
+    var addConsole = {
+      updated: function(){
+        console.log(`数据更新了,新值是${this.newVal}-----我是mixin, 我在全局mixin之后执行`);
+      }
+    }
+   Vue.mixin({
+     updated: function(){
+       console.log('我是全局 mixin, 我最先执行');
+     }
+   })
+   var app = new Vue({
+      el:'#app',
+      data: {
+        count: 20,
+      },
+      methods: {
+        add: function(){
+          this.count+=5;
+        }
+      },
+      mixins: [addConsole], // 此处需要时复数形态:  mixins
+      updated: function(){
+        console.log('我是原生mixin, 我最后执行');
+      }
+    })
+  </script>
+</body>
+</html>

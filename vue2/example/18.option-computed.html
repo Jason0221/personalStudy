@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> option computed </title>
+  <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <h1> option computed </h1>
+  <hr>
+  <div id="app">
+    <p>
+      原始数据: {{price}} --- 计算后数据: {{newPrice}} 
+    </p>
+    <p>
+      原始数据: {{list}} --- 计算后数据: {{newList}} 
+    </p>
+  </div>
+
+
+  <script>
+
+    var app = new Vue({
+      el:'#app',
+      data: {
+        price: 100,
+        list: ['a','b', 'c']
+      },
+      computed: {
+        newPrice: function(){
+          return this.price = `$ ${this.price}`
+        },
+        newList: function(){
+          return this.list.reverse()
+        }
+      }
+    })
+  </script>
+</body>
+</html>

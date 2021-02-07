@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> option watch </title>
+  <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <h1> option watch </h1>
+  <hr>
+  <div id="app">
+    <p>
+      今日温度: {{temperature}} 
+    </p>
+    <p> 穿衣建议: {{dress}}</p>
+    <button @click="add">add</button>
+    <button @click="minus">minus</button>
+  </div>
+
+
+  <script>
+    var dressOptions = ['羽绒服', '长袖', '短袖'];
+    var app = new Vue({
+      el:'#app',
+      data: {
+        temperature: 20,
+        dress: '长袖',
+      },
+      methods: {
+        add: function(){
+          this.temperature+=5;
+        },
+        minus: function(){
+          this.temperature-=5;
+        }
+      },
+      // 第一种写法, 在构造器里面写
+      // watch:{
+      //   temperature: function(newVal, oldValue){
+      //     if (newVal >= 26) {
+      //       this.dress = dressOptions[2]
+      //     } else if (newVal< 26 && newVal >= 0){
+      //       this.dress = dressOptions[1]
+      //     } else {
+      //       this.dress = dressOptions[0]
+      //     }
+      //   }
+      // }
+
+    })
+    // 第二种写法, 在构造器外面写
+    app.$watch('temperature', function(newVal, oldVal){
+      if (newVal >= 26) {
+            this.dress = dressOptions[2]
+          } else if (newVal< 26 && newVal >= 0){
+            this.dress = dressOptions[1]
+          } else {
+            this.dress = dressOptions[0]
+          }
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> option methods </title>
+  <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <h1> option methods </h1>
+  <hr>
+  <div id="app">
+    <p>
+      price: {{price}} 
+    </p>
+    <button @click="add">add</button>
+  </div>
+
+
+  <script>
+
+    var app = new Vue({
+      el:'#app',
+      data: {
+        price: 100,
+      },
+      methods: {
+        add: function(){
+          this.price++
+        }
+      }
+    })
+  </script>
+</body>
+</html>

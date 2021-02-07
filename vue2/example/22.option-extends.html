@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> option extends </title>
+  <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+  <h1> option extends </h1>
+  <hr>
+  <div id="app">
+    <p>
+      <!-- 今日温度: {{count}} -->
+      今日温度: ${count}
+    </p>
+    <button @click="add">add</button>
+  </div>
+
+  <!-- extends, 和mixin作用差不多,也是在原有构造器外面, 继续给构造器添加功能 -->
+  <script>
+    var extendsObj = {
+      updated: function(){
+        console.log('我是扩展的updated');
+      },
+      methods: {
+        //   此处中的add 与 构造器中的 add 同名, 此时 extends中的方法不会执行, 
+        //  mixin 中的也是这样
+        add: function(){
+          console.log('我是扩展的方法');
+        }
+      }
+    }
+   var app = new Vue({
+      el:'#app',
+      data: {
+        count: 20,
+      },
+      methods: {
+        add: function(){
+          console.log('我是原生的方法...  ');
+          this.count+=5;
+        }
+      },
+      updated: function(){
+        console.log('我是原生的updated...');
+      },
+      extends: extendsObj,
+      // 此处的功能是修改dom中插值的标志, 数组第一个值为插值开始的标志,
+      // 第二个值为插值结束的标志
+      delimiters: ['${', '}'], // 这时{{}} 插值方式失效, ${} 插值方式生效
+    })
+  </script>
+</body>
+</html>

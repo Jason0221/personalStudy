@@ -18,15 +18,17 @@
 
     var header_a = Vue.extend({
       template: `
-        <p>{{message}}</p>
+        <p>{{message}}--- {{a}}</p>
       `,
-      data: function() {
+      data: function() { // extend 中的data 需要返回一个函数, 函数中返回对象
         return {
           message: " hello , I'm header "
         }
-      }
+      },
+      props: ['a']
     })
-    new header_a().$mount('header')
+    // 挂载为header标签,  这里是dom选择器的规则, .header 就是挂载为 calss="header" 的DOM中
+    new header_a({propsData: {a:2}}).$mount('header');  
 
   </script>
 </body>
