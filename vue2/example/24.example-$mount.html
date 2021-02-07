@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> example  $mount  </title>
+  <script src="../assets/js/vue.js"></script>
+  <script src="../assets/js/jquery/jquery-3.5.0.js"></script>
+</head>
+<body>
+  <h1> example  $mount  </h1>
+  <hr>
+  <div id="app">
+    <p>
+      <!-- 今日温度: {{count}} -->
+      今日温度: ${count}
+    </p>
+  </div>
+  <button onclick="destroy()">destroy</button>
+  <button onclick="reload()">Reload</button>
+  <button onclick="tick()">更新数据</button>
+
+  <script>
+
+    var jason = Vue.extend({
+      template: `<p> {{count}}</p>`,
+      data: function(){
+        return {
+          count: 100
+        }
+      },
+      mounted: function(){
+        console.log('mounted....');
+      },
+      destroyed: function(){
+        console.log('destroyed...');
+      },
+      updated: function(){
+        console.log('updated......');
+      }
+    })
+    var vm = new jason().$mount('#app');
+    function destroy (){
+      vm.$destroy();
+    }
+    function reload (){
+      console.log('force');
+      vm.$forceUpdate();
+    }
+    function tick(){
+      vm.count = 200;
+      vm.$nextTick(function(){
+        console.log('数据更新');
+      })
+    }
+  </script>
+</body>
+</html>

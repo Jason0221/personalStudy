@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> component  slot </title>
+  <script src="../assets/js/vue.js"></script>
+  <script src="../assets/js/jquery/jquery-3.5.0.js"></script>
+</head>
+<body>
+  <h1> component slot  </h1>
+  <hr>
+  <div id="app">
+      <jason> 
+        <!-- 通过slot 属性 及 {{}}  把key:value 传递给组件中 -->
+        <span slot="blogUrl">{{blogUrl}}</span>  
+        <span slot="netName">{{netName}}</span>
+        <span slot="skill">{{skill}}</span>
+      </jason>
+  </div>
+  <!-- jason 组件的模板 -->
+  <template id="tep">
+    <div>
+      <!--  在template中  使用 slot 标签接收 组件中传递的值, name属性的值是传递的slot属性值 -->
+      <p>博客地址: <slot name="blogUrl"></slot></p>
+      <p>网名: <slot name="netName"></slot></p>
+      <p>技能类型: <slot name="skill"></slot></p>
+    </div>
+  </template>
+  
+  <script>
+    // jason 组件
+    var jason = {
+      template: "#tep"
+    }
+    var app = new Vue({
+      el: '#app',
+      data: {
+        blogUrl: 'http://www.baidu.com',
+        netName: 'jason',
+        skill: 'web前端'
+      },
+      components: {
+        "jason": jason, // jason 组件挂载到vue中.
+      }
+    })
+  </script>
+</body>
+</html>

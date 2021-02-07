@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> example  methods  </title>
+  <script src="../assets/js/vue.js"></script>
+  <script src="../assets/js/jquery/jquery-3.5.0.js"></script>
+</head>
+<body>
+  <h1> example  methods  </h1>
+  <hr>
+  <div id="app">
+    <p>
+      <!-- 今日温度: {{count}} -->
+      今日温度: ${count}
+    </p>
+    <button @click="add">add</button>
+  </div>
+
+  <!-- extends, 和mixin作用差不多,也是在原有构造器外面, 继续给构造器添加功能 -->
+  <script>
+
+   var app = new Vue({
+      el:'#app',
+      data: {
+        count: 20,
+      },
+      mounted: function(){
+        // 直接调用jquery
+        $('#app').html('Hello I\' jquery');
+      },
+      methods: {
+        add: function(){
+          console.log('我是原生的方法...  ');
+          this.count+=5;
+        }
+      },
+    })
+    app.add(); // 通过实例 app  直接调用实例的add方法.
+  </script>
+</body>
+</html>
