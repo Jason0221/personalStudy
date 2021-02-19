@@ -7,7 +7,7 @@ function getTotal(one: number, two: number) : number {  // 函数返回类型的
     return one + two;
 }
 
-let total : number = getTotal(1,2);
+let total_3  = getTotal(1,2);
  
 
 function sayHello() : void { // 不返回的函数, 需要将返回类型注解为 void 
@@ -15,25 +15,22 @@ function sayHello() : void { // 不返回的函数, 需要将返回类型注解�
 }
 
 
-// 不能执行所有语句的函数, 或者 函数里有死循环的函数,  返回值注解为 never
+// 不能执行所有语句的函数, 或者 函数里有死循环的函数, 返回值注解为 never
 function errorFun() : never {
-    throw new Error();
-    console.log('helo errorFun');
-    
+    throw new Error();  // 抛出异常, 不会执行下面的log函数
+    console.log('hello errorFun');
 }
 
 function forNever() : never {
-    while(true) {}
+    while(true) {}  // 死循环, 不会执行下面的log函数
     console.log('hello forNever');
 }
 
-function add( {one, two} : {one: number, two: number} ) {
+
+function add ({one, two} : {one: number, two:number})  {
     return one + two
 }
 
 let total_2 = add({one:1, two: 2})
 
 console.log(total_2);
-
-
-

@@ -4,27 +4,37 @@
  * 
  */
 
- const  count_3 : number = 100; // 基础静态类型 null undefined boolean void symbol
+// 基础静态类型
+const score : number = 100;
+const myName: string = 'jason';
 
+// 对象类型
 
-const Person: {
+// 1. 对象
+
+const fruits : {
     name: string,
-    age: number
-
+    from: string
 } = {
-    name: 'guohao',
-    age: 20
+    name: 'apple',
+    from: 'shannxi'
 }
 
-// 对象类型: 
+// 2. 数组
+const dogs : string [] = ['keji', 'erha'];
 
-// 数组类型
-const Persons : string [] = ['jason', 'guohao']; // Persons 是个数组, 数组中必须全是字符串;
+// 3.类
 
-// 类类型
-class Fruits{};
-const banana : Fruits = new Fruits();
+class Person{};
 
-// 函数类型
-const sayHi: () => string = ()=>('1')
+const jason_2 : Person = new Person()
+
+// 4.函数
+// sayHi  函数名
+// () => string  指定返回值必须为 字符串
+// = () => {return 'hello'} 函数主体
+const sayHi : () => string = ()=>{
+    return 'hello'
+}
+
 

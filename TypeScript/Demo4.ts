@@ -1,11 +1,13 @@
 /* 
-    类型注解  类型推断
+    类型注解  annotation
+    类型推断  inference
 */
 
-let count : number;  // : number 类型注解
+let count_3 : number;  // : number 类型注解
 
-count = 123;
+count_3 = 123;
 
+// 类型推断, 自动推断 huying 的类型为 string
 let huying = 'hello'
 
 function getTotal(one : number, two : number) { // 此处需要添加类型注解, one two的类型会被推断为any
