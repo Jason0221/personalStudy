@@ -1,9 +1,12 @@
+/* eslint-disable camelcase */
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Hi from '@/components/Hi'
-import Hi1 from '@/components/Hi1'
-import Hi2 from '@/components/Hi2'
+import child_1 from '@/components/child_1'
+import child_2 from '@/components/child_2'
+import Param from '@/components/Param'
+
 Vue.use(Router)
 
 export default new Router({
@@ -11,7 +14,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'HelloWorld',
+      name: 'HelloWorld111',
       component: HelloWorld
     },
     {
@@ -20,10 +23,20 @@ export default new Router({
       component: Hi,
       // 子路由, 在父级路由下面, 添加 children
       children: [
-        {path: '/', name: '/hi/', component: Hi},
-        {path: 'hi1', name: '/hi/hi1', component: Hi1}, // 子路由的path, 前面不加/
-        {path: 'hi2', name: 'hi2', component: Hi2}
+        {path: '/', name: 'hi params', component: Hi},
+        {path: 'hi1', name: '123', component: child_1}, // 子路由的path, 前面不加/
+        {path: 'hi2', name: 'aaa', component: child_2}
       ]
+    },
+    // 路由传参
+    {
+      path: '/params/:newsID/:newsTitle', // 设置接收的参数名
+      component: Param
+    },
+    // 路由重定向
+    {
+      path: '/jason',
+      redirect: '/'
     }
   ]
 })

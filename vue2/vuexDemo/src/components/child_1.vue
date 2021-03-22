@@ -1,18 +1,18 @@
 <template>
-  <div >
+  <div class="hello">
     <h1>{{ msg }}</h1>
-
-    <router-view/>
   </div>
 </template>
-
 <script>
 export default {
-  name: 'hi',
+  name: 'child_1',
   data () {
     return {
-      msg: 'I am Hi page'
+      msg: 'Hi, I am child_1'
     }
   }
 }
 </script>
+<style scoped>
+
+</style>
